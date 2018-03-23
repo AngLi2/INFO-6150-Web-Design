@@ -1,0 +1,41 @@
+body {
+  background-image:url("background.jpg");
+  color: rgb(255, 255, 255) ;
+}
+.text{
+  position:relative;
+  left:350px;width: 800px}
+header {
+  background-color: rgb(119, 107, 8);
+  width: 100%;
+}
+h1 {
+  margin-bottom: 0;
+}
+nav {
+  background-color: #e9c87d;
+}
+footer{
+  background-color: rgb(119, 107, 8);
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+#comment{
+  position: relative;
+  left:0px;
+}
+#image{
+  position:absolute;
+  left:0px;top:0px;
+}
+#signin{
+  position: absolute;
+  left:0px;top:100px;
+  width: 320px;}
+.signin{
+  position: absolute;
+  left:50px;top:100px;
+  width: 310px;
+  color: rgb(145, 214, 168);
+}
