@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>JavaJam Coffee Menu</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="javajam.css">
+</head>
+
+<body>
+  <div id='wrapper'>
+    <header>
+      <h1>JavaJam Coffee House</h1>
+    </header>
+    <nav>
+      <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="menu.html">Menu</a>
+          </li>
+          <li>
+            <a href="music.html">Music</a>
+          </li>
+          <li>
+            <a href="jobs.html">Jobs</a>
+          </li>
+          <li>
+            <a href="questionnaire.html">Questionnaire</a>
+          </li>
+      </ul>
+    </nav>
+    <main>
+      <h2>Questionare About JavaJam Coffee House</h2>
+      <p>
+        We want to know what is your favorite, so please compete this questionare and all of your advices will be paid high attention to. Please help us become better. We will randomly choose 100 lucky dogs who will recieve our special gifts.
+      </p>
+      <form>
+        <table width="80%" border="1" align="center">
+          <tr>
+            <td><label for="name">Name：</label></td>
+            <td><input type="text" name="name"></td>
+          </tr>
+          <tr>
+            <td><label for="gender">Gender:</label></td>
+            <td>
+              <input type="radio" name="gender" value="male">male
+              <input type="radio" name="gender" value="famale">female
+              <input type="radio" name="gender" value="others">others
+            </td>
+          </tr>
+          <tr>
+            <td><label for="tel">Tel Number:</label></td>
+            <td><input type="tel" name="tel"></td>
+          </tr>
+          <tr>
+            <td><label for="email">E-mail:</label></td>
+            <td><input type="email" name="email"></td>
+          </tr>
+          <tr>
+            <td><label for="coffee">What coffee do you like best?</label></td>
+            <td><input type="text" name="coffee" list="coffees"></td>
+            <datalist id="coffees">
+              <option value="Just Java">
+              <option value="Cafe au Lait">
+              <option value="Iced Cappuccino">
+            </datalist>
+            <tr>
+              <td><label for="singer">What singer do you prefer?</label></td>
+              <td><input type="text" name="singer" list="singers"></td>
+              <datalist id="singers">
+                <option value="Melanie Morris">
+                <option value="Tahoe Greg">
+              </datalist>
+              <tr>
+              <td><label for="sweet">What sweetness do you want?(assume the sweetness of pure suger is 100%)</label></td>
+              <td>&nbsp;Insipid<input type="range" name="sweet">Very Sweet</td>
+            </tr>
+          </tr>
+          <tr>
+            <td><label for="color">What color do you want the wall to be?</label></td>
+            <td><input type="color" name="color"></td>
+          </tr>
+          <tr>
+            <td><label for="number">How many times do you come to JavaJam a week?</label></td>
+            <td><input type="number" name="number" min="0" max="50"></td>
+          </tr>
+          <tr>
+            <td><label for="date">Choose today from the calendar:</label></td>
+            <td><input type="date" name="date"></td>
+          </tr>
+          <tr>
+            <td><label for="comment">Say something to us:</label></td>
+            <td><textarea name="comment" cols="30" rows="3"></textarea></td>
+          </tr>
+        </table>
+        <center>
+          <input type="submit" value="Submit Questionaire" id="submit">
+        </center>
+      </form>
+    </main>
+    <footer>
+      Copyright &copy; 2016 JavaJam Coffee House<br>
+      <a href="mailto:ang@li.com">ang@li.com</a>
+    </footer>
+  </div>
+</body>
+
+
+</html>

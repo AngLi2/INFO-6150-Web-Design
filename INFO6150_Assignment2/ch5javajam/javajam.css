@@ -1,0 +1,38 @@
+body {
+  background-color: #F5F5DC;
+  color: #2E0000;
+  font-family: Verdana, Arial, sans-serif;
+}
+nav{
+  font-weight: bold;
+  text-decoration: none;
+}
+nav a{
+  text-decoration: none;
+}
+ul {
+    list-style-image: url('images/images/marker.gif');
+}
+h1{
+  font-family: Georgia, "Times New Romman"; serif;
+}
+h2{
+  font-family: Georgia, "Times New Romman"; serif;
+}
+h3{
+  background-color: #E6D6A9;
+  text-transform: uppercase;
+}
+dt{
+ font-weight: bold;
+}
+header {
+  background-color: #D2B48C;
+}
+footer{
+  background-color:#D2B48C;
+  color: #000000;
+  font-size: .60em;
+  font-style: italic;
+  text-align: center;
+}

@@ -1,0 +1,71 @@
+body {
+  background-color: #F5F5DC;
+  background-image: url('images/images/javabackground.gif');
+  color: #2E0000;
+  font-family: Verdana, Arial, sans-serif;
+}
+nav{
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  background-color: #E6D6A9;
+  padding: 10px;
+}
+nav a{
+  text-decoration: none;
+}
+main{
+  padding: 20px;
+  display: block;
+}
+ul {
+    list-style-image: url('images/images/marker.gif');
+}
+h1{
+  height: 100px;
+  margin:0px;
+  background-image: url('images/images/javalogo.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+}
+h2{
+  font-family: Georgia, "Times New Romman",serif;
+}
+h3{
+  background-color: #E6D6A9;
+  text-transform: uppercase;
+}
+dt{
+ font-weight: bold;
+}
+header {
+  background-color: #D2B48C;
+}
+footer{
+  background-color:#D2B48C;
+  color: #000000;
+  font-size: .60em;
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}
+#wrapper{
+  margin: auto;
+  width: 80%;
+  background-color: #F5F5DC;
+  min-width: 960px;
+  max-width: 2048px;
+  box-shadow: 3px 3px 3px #2E0000
+}
+#hero{
+  height: 300px;
+  color: #f5f5dc;
+  background-image: url('images/images/heroroad.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%
+}
+.news{
+  margin-left: 20%;
+  margin-right: 20%;
+}

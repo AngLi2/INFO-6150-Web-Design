@@ -1,0 +1,9 @@
+5/6/7 chapter solustions are in folder "ch5javajam", "ch6javajam" and "ch7javajam".
+"forBonus" folder contains what I did for getting bonus points:
+	-based on the 7th chapter solution 
+	-created a html field named questionare.html
+	-used table
+	-used form(include text,color,submit,textarea,label,date and so on)
+	-added some code in javajam.css
+	-add Questionare to nav lists
+	
