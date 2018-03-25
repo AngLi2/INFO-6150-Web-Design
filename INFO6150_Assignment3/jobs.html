@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>JavaJam Coffee Menu</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="javajam.css">
+</head>
+
+<body>
+  <div id='wrapper'>
+    <header>
+      <h1>JavaJam Coffee House</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a>
+          <ul>
+            <li>
+              <a href="hotbrews.html">Hot Brews</a>
+            </li>
+            <li>
+              <a href="coldbrews.html">Cold Brews</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h2>Want a job at Javajam? Fill in the form below to start your application！</h2>
+      <form>
+        <table width="80%" border="1" align="center">
+          <tr>
+            <td><label for="name">Name：</label></td>
+            <td><input type="text" name="name"></td>
+          </tr>
+          <tr>
+            <td><label for="gender">Gender:</label></td>
+            <td>
+              <input type="radio" name="gender" value="male">male
+              <input type="radio" name="gender" value="famale">female
+              <input type="radio" name="gender" value="others">others
+            </td>
+          </tr>
+          <tr>
+            <td><label for="tel">Tel Number:</label></td>
+            <td><input type="tel" name="tel"></td>
+          </tr>
+          <tr>
+            <td><label for="email">E-mail:</label></td>
+            <td><input type="email" name="email"></td>
+          </tr>
+          <tr>
+            <td><label for="comment">Experience:</label></td>
+            <td><textarea name="comment" cols="30" rows="3"></textarea></td>
+          </tr>
+        </table>
+        <center>
+          <input type="submit" value="Submit Questionaire" id="submit">
+        </center>
+      </form>
+      <br />
+    </main>
+    <footer>
+      Copyright &copy; 2016 JavaJam Coffee House<br>
+      <a href="mailto:ang@li.com">ang@li.com</a>
+    </footer>
+  </div>
+</body>
+
+</html>
