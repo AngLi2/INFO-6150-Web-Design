@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Feedback</title>
+  <style>
+    label {
+      float: left;
+      width: 150px;
+    }
+
+    #container {
+      width: 700px;
+      margin: auto;
+      background-color: beige;
+    }
+
+    main {
+      padding: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+
+    <main>
+      <h2>Feeback</h2>
+      <h3>Love something? Hate something? Let us know!</h3> Note : Fields marked with an asterisk(*) are mandatory
+      <br><br>
+      <form method="post">
+        <label>Title*:</label>
+        <input type="radio" name="title" id="miss" value="miss" required="required" />Miss
+        <input type="radio" name="title" id="mr" value="mr" required="required" />Mr.
+        <input type="radio" name="title" id="mrs" value="mrs" required="required" />Mrs.
+        <br><br>
+        <label for="firstName">First Name*:</label>
+        <input type="text" name="firstName" id="firstName" placeholder="First Name" required="required" />
+        <br><br>
+
+
+        <label for="lastName">Last Name*:</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Last Name" required="required" />
+        <br><br>
+
+
+        <label for="emailId">Email Id*:</label>
+        <input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" required="required" />
+        <br><br>
+
+
+        <label for="phoneNumber">Phone Number*:</label>
+        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" required="required" />
+        <br><br>
+
+        <label for="zipcode">ZipCode*:</label>
+        <input type="text" name="zipcode" id="zipcode" placeholder="xxxxx" required="required" />
+        <br><br>
+        <label for="zipcode">How did you hear*:</label>
+        <input class="box" type='checkbox' name="source" value="facebook" /> Facebook
+        <input class="box" type='checkbox' name="source" value="google" /> Google
+        <input class="box" type='checkbox' name="source" value="yelp" /> Yelp
+        <br><br>
+        <div id="validateBox" style="display:none;color:red">
+          At least choose one of the checkboxes.<br><br>
+        </div>
+
+        <label for="comments">Comments*:</label>
+        <textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" required="required"></textarea>
+        <br><br>
+        <input id="submit" type="Submit">
+        <input type="Reset">
+        <br><br>
+      </form>
+    </main>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#firstName").next().next().after("<div id='errorFirstName' style='display:none'>Invalid input for your first name. Only text values permitted.<br><br></div>");
+      $("#lastName").next().next().after("<div id='errorLastName' style='display:none'>Invalid input for your last name. Only text values permitted.<br><br></div>");
+      $("#emailId").next().next().after("<div id='errorEmailId' style='display:none'>Invalid input for your email id. Please enter email id in proper format.<br><br></div>");
+      $("#phoneNumber").next().next().after("<div id='errorPhoneNumber' style='display:none'>Invalid input for your phone number. Only numerical values permitted and in the requested format xxx-xxx-xxxx.<br><br></div>");
+      $("#zipcode").next().next().after("<div id='errorZipcode' style='display:none'>Invalid input for your zip code. Only numerical values permitted and in the requested format xxxxxx.<br><br></div>");
+      $("#firstName").blur(function() {
+        if (/^[a-zA-Z]+$/.test($("#firstName").val())) {
+          $("#errorFirstName").css("display", "none");
+          $(this).css("border", "");
+        } else {
+          $(this).css("border", "2px solid red");
+          $(this).val("");
+          $("#errorFirstName").css("color", "red").css("display", "block");
+        }
+      });
+      $("#lastName").blur(function() {
+        if (/^[a-zA-Z]+$/.test($("#lastName").val())) {
+          $("#errorLastName").css("display", "none");
+          $(this).css("border", "");
+        } else {
+          $(this).css("border", "2px solid red");
+          $(this).val("");
+          $("#errorLastName").css("color", "red").css("display", "block");;
+        }
+      });
+      $("#emailId").blur(function() {
+        if (/^([\w\.]+)@([\w\.]+)\.(\w+)$/.test($("#emailId").val())) {
+          $("#errorEmailId").css("display", "none");
+          $(this).css("border", "");
+        } else {
+          $(this).css("border", "2px solid red");
+          $(this).val("");
+          $("#errorEmailId").css("color", "red").css("display", "block");;
+        }
+      });
+      $("#phoneNumber").blur(function() {
+        if (/^\d{3}-\d{3}-\d{4}$/.test($("#phoneNumber").val())) {
+          $("#errorPhoneNumber").css("display", "none");
+          $(this).css("border", "");
+        } else {
+          $(this).css("border", "2px solid red");
+          $(this).val("");
+          $("#errorPhoneNumber").css("color", "red").css("display", "block");;
+        }
+      });
+      $("#zipcode").blur(function() {
+        if (/^\d{5}$/.test($("#zipcode").val())) {
+          $("#errorZipcode").css("display", "none");
+          $(this).css("border", "");
+        } else {
+          $(this).css("border", "2px solid red");
+          $(this).val("");
+          $("#errorZipcode").css("color", "red").css("display", "block");;
+        }
+      });
+      $(".box").click(function() {
+        if ($(".box").is(":checked")) {
+          $("#validateBox").css("display", "none");
+        } else {
+          $("#validateBox").css("display", "block");
+        }
+      });
+      $("#submit").click(function() {
+        if (!$(".box").is(":checked")) {
+          $("#validateBox").css("display", "block");
+          return false;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
