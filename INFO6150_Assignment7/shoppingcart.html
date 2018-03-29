@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <style>
+    td,
+    th {
+      width: 150px;
+      text-align: center;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    #container {
+      width: 1100px;
+    }
+
+    .num {
+      width: 50px;
+      text-align: center;
+    }
+
+    .required {
+      color: red;
+    }
+
+    .form {
+      width: 550px;
+      float: left;
+    }
+  </style>
+</head>
+
+<body ng-app="myApp">
+  <p>
+    <h4>If you want something, just add it to cart and then choose the quantity!<br />
+  You can only click the add or reduce button to change the quantity!</h4></p>
+  <div ng-controller="VC1">
+    <table>
+      <tr>
+        <th>Product Name</th>
+        <th>Add to Cart</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Totle Price(tax not included)</th>
+        <th>Totle Price(6.25% tax included)</th>
+      </tr>
+      <tr ng-repeat="x in Product">
+        <td>{{x.name}}</td>
+        <td><input type="checkbox" ng-model="x.checkbox" ng-checked="checked($index)"></td>
+        <td>
+          <button ng-click="reduce($index)">-</button>
+          <input type="text" class="num" ng-model="x.quantity" ng-change="change($index)" />
+          <button ng-click="add($index)">+</button> </td>
+        <td>{{x.price}}</td>
+        <td>{{x.price * x.quantity}}</td>
+        <td>{{x.price * x.quantity * 1.0625}}</td>
+      </tr>
+    </table>
+    <div>
+      <span>Totle Price(tax not included): </span>
+      <span ng-bind="totalNoTaxPrice()"></span></br>
+      <span>Totle Price(6.25% tax included): </span>
+      <span ng-bind="totalTaxPrice()"></span></br>
+      <span>Enter your promo code(if you have): </span>
+      <span><input name="discount" ng-model="discount">
+      <input type="button" value="submit" ng-click="discountButton($index)"/></span><span><i><small>(DISCOUNT5, DISCOUNT10, DISCOUNT15 and DISCOUNT20)</small></i></span></br>
+      <span>Totle Price(after discount): </span>
+      <span ng-bind="totalPrice()" ng-model="AfterDiscount"></span></br>
+
+    </div>
+    <div id="container">
+
+      <div class="form">
+        <form name="myFormS">
+          <h4>Shipping address: </h4>
+          <p>First Name:
+            <input placeholder="First Name" name="myFirstNameS" ng-model="myFirstNameS" pattern="^[a-zA-Z]+$" required>
+            <span class="required" ng-show="myFormS.myFirstNameS.$touched && myFormS.myFirstNameS.$invalid">
+              <span ng-show="myFormS.myFirstNameS.$error.required">The First Name is required.</span>
+              <span class="required" ng-show="myFormS.myFirstNameS.$error.pattern">Invalid First Name!</span>
+            </span>
+          </p>
+          <p>Last Name:
+            <input placeholder="Last Name" name="myLastNameS" ng-model="myLastNameS" pattern="^[a-zA-Z]+$" required>
+            <span class="required" ng-show="myFormS.myLastNameS.$touched && myFormS.myLastNameS.$invalid">
+              <span ng-show="myFormS.myLastNameS.$error.required">The Last Name is required.</span>
+              <span class="required" ng-show="myFormS.myLastNameS.$error.pattern">Invalid Last Name!</span>
+            </span>
+          </p>
+          <p>Phone Number:
+            <input placeholder="xxx-xxx-xxxx" name="myPhoneS" ng-model="myPhoneS" pattern="^\d{3}-\d{3}-\d{4}$" required>
+            <span class="required" ng-show="myFormS.myPhoneS.$touched && myFormS.myPhoneS.$invalid">
+              <span ng-show="myFormS.myPhoneS.$error.required">The Phone Number is required.</span>
+              <span class="required" ng-show="myFormS.myPhoneS.$error.pattern">Invalid Phone Number!</span>
+            </span>
+          </p>
+          <p>Email:
+            <input placeholder="yourname@domain.com" name="myEmailS" ng-model="myEmailS" pattern="^([\w\.]+)@([\w\.]+)\.(\w+)$" required>
+            <span class="required" ng-show="myFormS.myEmailS.$touched && myFormS.myEmailS.$invalid">
+              <span ng-show="myFormS.myEmailS.$error.required">The Email Address is required.</span>
+              <span class="required" ng-show="myFormS.myEmailS.$error.pattern">Invalid Email Address!</span>
+            </span>
+          </p>
+          <p>Zip Code:
+            <input placeholder="xxxxx" name="myZipcodeS" ng-model="myZipcodeS" pattern="^\d{5}$" required>
+            <span class="required" ng-show="myFormS.myZipcodeS.$touched && myFormS.myZipcodeS.$invalid">
+              <span ng-show="myFormS.myZipcodeS.$error.required">The Zip Code is required.</span>
+              <span class="required" ng-show="myFormS.myZipcodeS.$error.pattern">Invalid Zip Code!</span>
+            </span>
+          </p>
+          <p>Street Address:
+            <input placeholder="Street Address" name="myStreetAddressS" ng-model="myStreetAddressS" required>
+            <span class="required" ng-show="myFormS.myStreetAddressS.$touched && myFormS.myStreetAddressS.$invalid">The StreetAdress is required.</span>
+          </p>
+          <p>City:
+            <input placeholder="City" name="myCityS" ng-model="myCityS" required>
+            <span class="required" ng-show="myFormS.myCityS.$touched && myFormS.myCityS.$invalid">The City is required.</span>
+          </p>
+          <p>State:
+            <input placeholder="State" name="myStateS" ng-model="myStateS" required>
+            <span class="required" ng-show="myFormS.myStateS.$touched && myFormS.myStateS.$invalid">The State is required.</span>
+          </p>
+          <p>
+            <input type="submit" ng-disabled="myFormS.myFirstNameS.$touched && myFormS.myFirstNameS.$invalid || myFormS.myLastNameS.$touched && myFormS.myLastNameS.$invalid || myFormS.myPhoneS.$touched && myFormS.myPhoneS.$invalid || myFormS.myEmailS.$touched && myFormS.myEmailS.$invalid || myFormS.myZipcodeS.$touched && myFormS.myZipcodeS.$invalid || myFormS.myStreetAddressS.$touched && myFormS.myStreetAddressS.$invalid || myCityS.$touched && myFormS.myCityS.$invalid || myFormS.myStateS.$touched && myFormS.myStateS.$invalid">
+          </p>
+        </form>
+      </div>
+      <div class="form">
+        <form name="myFormB">
+          <h4>Billing address: </h4>
+          <p>First Name:
+            <input placeholder="First Name" name="myFirstNameB" ng-model="myFirstNameB" pattern="^[a-zA-Z]+$" required>
+            <span class="required" ng-show="myFormB.myFirstNameB.$touched && myFormB.myFirstNameB.$invalid">
+              <span ng-show="myFormB.myFirstNameB.$error.required">The First Name is required.</span>
+              <span class="required" ng-show="myFormB.myFirstNameB.$error.pattern">Invalid First Name!</span>
+            </span>
+          </p>
+          <p>Last Name:
+            <input placeholder="Last Name" name="myLastNameB" ng-model="myLastNameB" pattern="^[a-zA-Z]+$" required>
+            <span class="required" ng-show="myFormB.myLastNameB.$touched && myFormB.myLastNameB.$invalid">
+              <span ng-show="myFormB.myLastNameB.$error.required">The Last Name is required.</span>
+              <span class="required" ng-show="myFormB.myLastNameB.$error.pattern">Invalid Last Name!</span>
+            </span>
+          </p>
+          <p>Phone Number:
+            <input placeholder="xxx-xxx-xxxx" name="myPhoneB" ng-model="myPhoneB" pattern="^\d{3}-\d{3}-\d{4}$" required>
+            <span class="required" ng-show="myFormB.myPhoneB.$touched && myFormB.myPhoneB.$invalid">
+              <span ng-show="myFormB.myPhoneB.$error.required">The Phone Number is required.</span>
+              <span class="required" ng-show="myFormB.myPhoneB.$error.pattern">Invalid Phone Number!</span>
+            </span>
+          </p>
+          <p>Email:
+            <input placeholder="yourname@domain.com" name="myEmailB" ng-model="myEmailB" pattern="^([\w\.]+)@([\w\.]+)\.(\w+)$" required>
+            <span class="required" ng-show="myFormB.myEmailB.$touched && myFormB.myEmailB.$invalid">
+              <span ng-show="myFormB.myEmailB.$error.required">The Email Address is required.</span>
+              <span class="required" ng-show="myFormB.myEmailB.$error.pattern">Invalid Email Address!</span>
+            </span>
+          </p>
+          <p>Zip Code:
+            <input placeholder="xxxxx" name="myZipCodeB" ng-model="myZipCodeB" pattern="^\d{5}$" required>
+            <span class="required" ng-show="myFormB.myZipCodeB.$touched && myFormB.myZipCodeB.$invalid">
+              <span ng-show="myFormB.myZipCodeB.$error.required">The Zip Code is required.</span>
+              <span class="required" ng-show="myFormB.myZipCodeB.$error.pattern">Invalid Zip Code!</span>
+            </span>
+          </p>
+          <p>Street Address:
+            <input placeholder="Street Address" name="myStreetAddressB" ng-model="myStreetAddressB" required>
+            <span class="required" ng-show="myFormB.myStreetAddressB.$touched && myFormB.myStreetAddressB.$invalid">The StreetAdress is required.</span>
+          </p>
+          <p>City:
+            <input placeholder="City" name="myCityB" ng-model="myCityB" required>
+            <span class="required" ng-show="myFormB.myCityB.$touched && myFormB.myCityB.$invalid">The City is required.</span>
+          </p>
+          <p>State:
+            <input placeholder="State" name="myStateB" ng-model="myStateB" required>
+            <span class="required" ng-show="myFormB.myStateB.$touched && myFormB.myStateB.$invalid">The State is required.</span>
+          </p>
+          <p>
+            <input type="submit" ng-disabled="myFormB.myFirstNameB.$touched && myFormB.myFirstNameB.$invalid || myFormB.myLastNameB.$touched && myFormB.myLastNameB.$invalid || myFormB.myPhoneB.$touched && myFormB.myPhoneB.$invalid || myFormB.myEmailB.$touched && myFormB.myEmailB.$invalid || myFormB.myZipcodeB.$touched && myFormB.myZipcodeB.$invalid || myFormB.myStreetAddressB.$touched && myFormB.myStreetAddressB.$invalid || myFormB.myCityB.$touched && myFormB.myCityB.$invalid || myFormB.myStateB.$touched && myFormB.myStateB.$invalid">
+          </p>
+        </form>
+      </div>
+    </div>
+</body>
+<script type="text/javascript">
+  var app = angular.module("myApp", []);
+  app.controller("VC1", function($scope) {
+    $scope.Product = [{
+        name: "item1",
+        quantity: 0,
+        price: 1000,
+        checkbox: false
+      },
+      {
+        name: "item2",
+        quantity: 0,
+        price: 2000,
+        checkbox: false
+      },
+      {
+        name: "item3",
+        quantity: 0,
+        price: 3000,
+        checkbox: false
+      },
+      {
+        name: "item4",
+        quantity: 0,
+        price: 4000,
+        checkbox: false
+      },
+      {
+        name: "item5",
+        quantity: 0,
+        price: 5000,
+        checkbox: false
+      },
+      {
+        name: "item6",
+        quantity: 0,
+        price: 6000,
+        checkbox: false
+      },
+      {
+        name: "item7",
+        quantity: 0,
+        price: 7000,
+        checkbox: false
+      },
+      {
+        name: "item8",
+        quantity: 0,
+        price: 8000,
+        checkbox: false
+      },
+      {
+        name: "item9",
+        quantity: 0,
+        price: 9000,
+        checkbox: false
+      },
+      {
+        name: "item10",
+        quantity: 0,
+        price: 10000,
+        checkbox: false
+      }
+    ];
+    $scope.reduce = function(index) {
+      if ($scope.Product[index].quantity > 0) {
+        $scope.Product[index].quantity--;
+      } else {
+        $scope.remove(index);
+      }
+    }
+    $scope.add = function(index) {
+      $scope.Product[index].quantity++;
+    }
+    $scope.totalNoTaxPrice = function() {
+      var price = 0
+      for (var i = 0; i < $scope.Product.length; i++) {
+        price += $scope.Product[i].quantity * $scope.Product[i].price;
+      }
+      return price;
+    }
+    $scope.totalTaxPrice = function() {
+      var price = 0
+      for (var i = 0; i < $scope.Product.length; i++) {
+        price += $scope.Product[i].quantity * $scope.Product[i].price * 1.0625;
+      }
+      return price;
+    }
+    $scope.totalPrice = function() {
+      var price = 0
+      for (var i = 0; i < $scope.Product.length; i++) {
+        price += $scope.Product[i].quantity * $scope.Product[i].price * 1.0625;
+      }
+      return price;
+    }
+    $scope.change = function(index) {
+      if (!$scope.Product[index].quantity >= 0)
+        $scope.Product[index].quantity = 0;
+    }
+    $scope.$watch('Product', function(oldvalue, newvalue) {
+      console.log(oldvalue);
+      console.log(newvalue);
+    })
+    $scope.checked = function(index) {
+      if (!$scope.Product[index].checkbox) {
+        $scope.Product[index].quantity = 0;
+      }
+    }
+    $scope.discountButton = function() {
+      switch ($scope.discount) {
+        case "":
+          alert("Please enter promp code!");
+          break;
+        case "DISCOUNT5":
+          $scope.totalPrice = function() {
+            var price = 0
+            for (var i = 0; i < $scope.Product.length; i++) {
+              price += $scope.Product[i].quantity * $scope.Product[i].price * 1.0625;
+            }
+            return price * 0.95;
+          }
+          break;
+        case "DISCOUNT10":
+          $scope.totalPrice = function() {
+            var price = 0
+            for (var i = 0; i < $scope.Product.length; i++) {
+              price += $scope.Product[i].quantity * $scope.Product[i].price * 1.0625;
+            }
+            return price * 0.9;
+          }
+          break;
+        case "DISCOUNT15":
+          $scope.totalPrice = function() {
+            var price = 0
+            for (var i = 0; i < $scope.Product.length; i++) {
+              price += $scope.Product[i].quantity * $scope.Product[i].price * 1.0625;
+            }
+            return price * 0.85;
+          }
+          break;
+        case "DISCOUNT20":
+          $scope.totalPrice = function() {
+            var price = 0
+            for (var i = 0; i < $scope.Product.length; i++) {
+              price += $scope.Product[i].quantity * $scope.Product[i].price * 1.0625;
+            }
+            return price * 0.8;
+          }
+          break;
+        default:
+          alert("invalid promo code!");
+          $scope.totalPrice = function() {
+            var price = 0
+            for (var i = 0; i < $scope.Product.length; i++) {
+              price += $scope.Product[i].quantity * $scope.Product[i].price * 1.0625;
+            }
+            return price;
+          }
+      }
+    }
+  })
+</script>
+
+</html>
