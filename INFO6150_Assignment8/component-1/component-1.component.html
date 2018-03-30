@@ -1,0 +1,12 @@
+<div class="bannerContainer">
+  <ul class="bannerPicList">
+    <li [class.active]="currentPic==0"> <h1>This is the First one</h1></li>
+    <li [class.active]="currentPic==1"> <h1>This is the Second one</h1></li>
+    <li [class.active]="currentPic==2"> <h1>This is the Third one</h1></li>
+  </ul>
+  <ul class="bannerBtnList">
+    <li><span class="picBtn" (click)="changebanner(0)">Click me and get the first one</span></li>
+    <li><span class="picBtn" (click)="changebanner(1)">Click me and get the second one</span></li>
+    <li><span class="picBtn" (click)="changebanner(2)">Click me and get the third one</span></li>
+  </ul>
+</div>

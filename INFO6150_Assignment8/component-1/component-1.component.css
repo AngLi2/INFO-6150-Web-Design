@@ -1,0 +1,29 @@
+.bannerPicList li {
+  display: none;
+}
+
+.bannerPicList li.active {
+  display: block;
+}
+
+.bannerContainer .bannerBtnList {
+  position: absolute;
+  top: 200px;
+  left: 116px;
+}
+
+.bannerContainer .bannerBtnList li {
+  float: left;
+  margin: 0 5px;
+  list-style-type: none;
+}
+
+.bannerContainer .bannerBtnList span.picBtn {
+  margin: 20px;
+  height: 10px;
+  width: 300px;
+  background-color: #ddd;
+  display: block;
+  border-radius: 5px;
+  cursor: pointer;
+}
